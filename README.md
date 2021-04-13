@@ -29,7 +29,7 @@ Attached to this README.md should be three `docker-compose.yml` files. One for t
   2. When deploying both tools on the same server:<br>
     `sudo docker-compose -f docker-compose.both.yml up -d`
 
-- When deploying BridgeHead on a separate server:<br>
+2. When deploying BridgeHead on a separate server:<br>
   `sudo docker-compose -f docker-compose.BH.yml up -d`
 
 ### Sample Locator
@@ -56,18 +56,24 @@ Attached to this README.md should be three `docker-compose.yml` files. One for t
 
 1. Open a browser and go to: http://
 
-  <ip_address_of_your_bh>/login.xhtml </ip_address_of_your_bh>
+  <ip_address_of_your_bh>/login.xhtml</ip_address_of_your_bh>
 
 2. Default logins are: Username: admin Password: adminpass
+
 3. Click on SearchBrokers
 4. Register a SL to this BH by copying the same ip address written into the `docker-compose.yml` at the beginning of this guide, a valid email address and selecting total size for Automatic reply. Example: ![Register](images/2021/04/register.png)
-5. To get the authentication code for registering, access the database copying the following commands into the terminal of the server running an instance of SampleLocator:
+5. To get the authentication code for registering, access the postgres database by copying the following commands into the terminal of the server running an instance of SampleLocator:
 6. `sudo docker exec -it "$(sudo docker ps -aqf "name=searchbroker-db")" bash -c "psql searchbroker searchbroker"`
 7. `Select * from samply.tokenrequest;`
-8. Copy the auth_code into the BridgeHead GUI.
+8. Copy the auth_code into the BridgeHead GUI and click ok.
 9. Make necessary modifications to the SL database: create a location for the BH, link the site with BH and create a user to forward search queries to. All of this can by accomplished by running:
 10. `Insert into samply.site (id,name,active) VALUES (1,'test',true);`
 11. `Insert into samply.bank_site (bank_id,site_id,approved) VALUES (1,1,true);`
 12. `Insert into samply.contact (id,firstname,lastname,email) VALUES (1,'test','test','test@test.de');`
 13. `Insert into samply.user (id,username,email,name,authid,contact_id) VALUES (1,'Searchbroker','no-reply@vmitro.de','GBA SEARCHBROKER',600,1);`
 14. Quit psql with \q and exit the bash shell with ^D .
+15. To test the connectivity run tests in the Test section of the BridgeHead GUI.
+
+  ### Optional
+
+   Generate and upload test data into your bridgehead following this [guide](https://github.com/samply/bridgehead-deployment#checking-your-newly-installed-bridgehead).
