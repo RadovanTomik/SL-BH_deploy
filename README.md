@@ -54,14 +54,14 @@ Attached to this README.md should be three `docker-compose.yml` files. One for t
 
 ## Connecting the BridgeHead and the SampleLocator
 
-1. Open a browser and go to: http://
-
-  <ip_address_of_your_bh>/login.xhtml</ip_address_of_your_bh>
+1. Open a browser and go to: `http://<ip_address_of_your_bh>/login.xhtml`
 
 2. Default logins are: Username: admin Password: adminpass
 
 3. Click on SearchBrokers
+
 4. Register a SL to this BH by copying the same ip address written into the `docker-compose.yml` at the beginning of this guide, a valid email address and selecting total size for Automatic reply. Example: ![Register](images/2021/04/register.png)
+
 5. To get the authentication code for registering, access the postgres database by copying the following commands into the terminal of the server running an instance of SampleLocator:
 6. `sudo docker exec -it "$(sudo docker ps -aqf "name=searchbroker-db")" bash -c "psql searchbroker searchbroker"`
 7. `Select * from samply.tokenrequest;`
@@ -76,4 +76,4 @@ Attached to this README.md should be three `docker-compose.yml` files. One for t
 
   ### Optional
 
-   Generate and upload test data into your bridgehead following this [guide](https://github.com/samply/bridgehead-deployment#checking-your-newly-installed-bridgehead).
+  Generate and upload test data into your bridgehead following this [guide](https://github.com/samply/bridgehead-deployment#checking-your-newly-installed-bridgehead).
