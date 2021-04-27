@@ -16,7 +16,7 @@ Attached to this README.md should be three `docker-compose.yml` files. One for t
 
 1. Install git, docker and docker compose. Note: paste following commands into a shell of your choice, e.g. bash, .zsh.
 
-  Debian:<br>
+  Debian 10:<br>
   `sudo apt-get update && sudo apt-get upgrade && sudo apt-get install git && sudo apt-get install docker && sudo apt-get install docker-compose`
 
   MacOS:
@@ -36,7 +36,7 @@ Attached to this README.md should be three `docker-compose.yml` files. One for t
 
 1. Install git, docker and docker compose. Note: paste following commands into a shell of your choice, e.g. bash, .zsh.
 
-  Debian:
+  Debian 10:
 
   `sudo apt-get update && sudo apt-get upgrade && sudo apt-get install git && sudo apt-get install docker && sudo apt-get install docker-compose`
 
@@ -63,6 +63,7 @@ Attached to this README.md should be three `docker-compose.yml` files. One for t
 4. Register a SL to this BH by copying the same ip address written into the `docker-compose.yml` at the beginning of this guide, a valid email address and selecting total size for Automatic reply. Example: ![Register](images/2021/04/register.png)
 
 5. To get the authentication code for registering, access the postgres database by copying the following commands into the terminal of the server running an instance of SampleLocator:
+
 6. `sudo docker exec -it "$(sudo docker ps -aqf "name=searchbroker-db")" bash -c "psql searchbroker searchbroker"`
 7. `Select * from samply.tokenrequest;`
 8. Copy the auth_code into the BridgeHead GUI and click ok.
